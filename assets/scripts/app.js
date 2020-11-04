@@ -66,51 +66,62 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
         finalMonsterHealth: currentMonsterHealth,
         finalPlayerHealth: playerHealth,
       };
-      case LOG_EVENT_PLAYER_HEAL:
-        logEntry = {
-          event: ev,
-          value: val,
-          target: 'PLAYER',
-          finalMonsterHealth: currentMonsterHealth,
-          finalPlayerHealth: playerHealth,
-        };
-
+      break;
+    case LOG_EVENT_PLAYER_HEAL:
+      logEntry = {
+        event: ev,
+        value: val,
+        target: 'PLAYER',
+        finalMonsterHealth: currentMonsterHealth,
+        finalPlayerHealth: playerHealth,
+      };
+      break;
+    case LOG_EVENT_GAME_OVER:
+      logEntry = {
+        event: ev,
+        value: val,
+        finalMonsterHealth: currentMonsterHealth,
+        finalPlayerHealth: playerHealth,
+      };
+      break;
+      default: 
+      logEntry = {};
   }
 
-  if (ev === LOG_EVENT_PLAYER_ATTACK) {
-    logEntry.target = 'MONSTER'; //more dynamic and shorter approach for bigger apps
-  } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
-    logEntry = {
-      event: ev,
-      value: val,
-      target: 'MONSTER',
-      finalMonsterHealth: currentMonsterHealth,
-      finalPlayerHealth: playerHealth,
-    };
-  } else if (ev === LOG_EVENT_MONSTER_ATTACK) {
-    logEntry = {
-      event: ev,
-      value: val,
-      target: 'PLAYER',
-      finalMonsterHealth: currentMonsterHealth,
-      finalPlayerHealth: playerHealth,
-    };
-  } else if (ev === LOG_EVENT_PLAYER_HEAL) {
-    logEntry = {
-      event: ev,
-      value: val,
-      target: 'PLAYER',
-      finalMonsterHealth: currentMonsterHealth,
-      finalPlayerHealth: playerHealth,
-    };
-  } else if (ev === LOG_EVENT_GAME_OVER) {
-    logEntry = {
-      event: ev,
-      value: val,
-      finalMonsterHealth: currentMonsterHealth,
-      finalPlayerHealth: playerHealth,
-    };
-  }
+  // if (ev === LOG_EVENT_PLAYER_ATTACK) {
+  //   logEntry.target = 'MONSTER'; //more dynamic and shorter approach for bigger apps
+  // } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
+  //   logEntry = {
+  //     event: ev,
+  //     value: val,
+  //     target: 'MONSTER',
+  //     finalMonsterHealth: currentMonsterHealth,
+  //     finalPlayerHealth: playerHealth,
+  //   };
+  // } else if (ev === LOG_EVENT_MONSTER_ATTACK) {
+  //   logEntry = {
+  //     event: ev,
+  //     value: val,
+  //     target: 'PLAYER',
+  //     finalMonsterHealth: currentMonsterHealth,
+  //     finalPlayerHealth: playerHealth,
+  //   };
+  // } else if (ev === LOG_EVENT_PLAYER_HEAL) {
+  //   logEntry = {
+  //     event: ev,
+  //     value: val,
+  //     target: 'PLAYER',
+  //     finalMonsterHealth: currentMonsterHealth,
+  //     finalPlayerHealth: playerHealth,
+  //   };
+  // } else if (ev === LOG_EVENT_GAME_OVER) {
+  //   logEntry = {
+  //     event: ev,
+  //     value: val,
+  //     finalMonsterHealth: currentMonsterHealth,
+  //     finalPlayerHealth: playerHealth,
+  //   };
+  // }
   battleLog.push(logEntry);
 }
 
