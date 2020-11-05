@@ -237,7 +237,7 @@ function printLogHandler() {
     innerFor: for (let k = 0; k < 5; k++) {
       if (k === 3) {
         // break outerWhile;
-        continue outerWhile; //dangerous! => Infinite loop!
+        // continue outerWhile; //dangerous! => Infinite loop!
       }
       console.log('Inner', k);
     }
